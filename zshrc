@@ -1,8 +1,58 @@
 # Rami's take on Luke's config for ZSH
+
+# PATH
 export PATH="/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export TERM=xterm-256color
 
+# Promt string
+PS1="$ "
 
+# History
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt appendhistory
+setopt sharehistory
+
+# Basic auto/tab complete
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# vi keys in menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+	if [[ ${KEYMAP} == vicmd ]] ||
+	     [[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] ||
+	     [[ ${KEYMAP} == viins ]] ||
+	     [[ ${KEYMAP} = '' ]] ||
+	     [[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+	fi
+}
+zle-line-init() {
+	zle -K viins # initiate `vi insert`
+	echo -ne "\e[5 q"
+}
+zle -N zle-keymap-select; zle -N zle-line-init
+
+# Edit command line
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
