@@ -20,9 +20,15 @@ sym() {
 			echo "[ ERR ] symlink '$dst_dir/$dst_sym' does not exists."
 			return 1;
 		fi
+		echo "[ OK  ] unlinking '$1' -> '$dst_dir/$dst_sym'"
 		rm "$dst_dir/$dst_sym"
 		return 0;
 	else
+		if [ -f "$dst_dir/$dst_sym" ]; then
+			echo "[ OK  ] symlink '$dst_dir/$dst_sym' already exists"
+			return 1;
+		fi
+		echo "[ OK  ] linking '$1' -> '$dst_dir/$dst_sym'"
 		mkdir -p "$dst_dir"
 		ln -s "$src" "$dst_dir/$dst_sym"
 		return 0;
