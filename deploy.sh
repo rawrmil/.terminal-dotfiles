@@ -2,10 +2,10 @@
 
 hascmd() {
 	if [ -z $(which "$1") ]; then
-		echo "[ ERR ] Command '$1' absent."
+		echo "Command '$1' absent"
 		return 1
 	fi
-	echo "[ OK  ] Command '$1' present"
+	echo "Command '$1' present"
 	return 0
 }
 
@@ -17,18 +17,18 @@ sym() {
 	dst_sym=$3
 	if [ "$DEPLOY_ACTION" = "clean" ]; then
 		if [ ! -L "$dst_dir/$dst_sym" ]; then
-			echo "[ ERR ] symlink '$dst_dir/$dst_sym' does not exists."
+			echo "-> Symlink '$dst_dir/$dst_sym' does not exists."
 			return 1;
 		fi
-		echo "[ OK  ] unlinking '$1' -> '$dst_dir/$dst_sym'"
+		echo "-> Unlinking '$1' -> '$dst_dir/$dst_sym'"
 		rm "$dst_dir/$dst_sym"
 		return 0;
 	else
 		if [ -L "$dst_dir/$dst_sym" ]; then
-			echo "[ OK  ] symlink '$dst_dir/$dst_sym' already exists"
+			echo "-> Symlink '$dst_dir/$dst_sym' already exists"
 			return 1;
 		fi
-		echo "[ OK  ] linking '$1' -> '$dst_dir/$dst_sym'"
+		echo "-> Linking '$1' -> '$dst_dir/$dst_sym'"
 		mkdir -p "$dst_dir"
 		ln -s "$src" "$dst_dir/$dst_sym"
 		return 0;
