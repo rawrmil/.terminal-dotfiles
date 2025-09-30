@@ -16,7 +16,7 @@ sym() {
 	dst_dir=$2
 	dst_sym=$3
 	if [ "$DEPLOY_ACTION" = "clean" ]; then
-		if [ ! -f "$dst_dir/$dst_sym" ]; then
+		if [ ! -L "$dst_dir/$dst_sym" ]; then
 			echo "[ ERR ] symlink '$dst_dir/$dst_sym' does not exists."
 			return 1;
 		fi
@@ -24,7 +24,7 @@ sym() {
 		rm "$dst_dir/$dst_sym"
 		return 0;
 	else
-		if [ -f "$dst_dir/$dst_sym" ]; then
+		if [ -L "$dst_dir/$dst_sym" ]; then
 			echo "[ OK  ] symlink '$dst_dir/$dst_sym' already exists"
 			return 1;
 		fi
