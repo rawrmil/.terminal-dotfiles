@@ -36,7 +36,7 @@ sym() {
 	return 1;
 }
 
-DFDIR=$HOME/.terminal-dotfiles
+CONFIGS=$HOME/.terminal-dotfiles/config
 
-hascmd "zsh"  && sym "$DFDIR/zshrc" "$HOME" ".zshrc"
-hascmd "nvim" && sym "$DFDIR/nvim-init.lua" "$HOME/.config/nvim" "init.lua"
+hascmd "zsh"  && sym "$CONFIGS/zshrc" "$HOME" ".zshrc"
+hascmd "nvim" && sym "$CONFIGS/nvim-init.lua" "$HOME/.config/nvim" "init.lua"
