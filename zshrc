@@ -7,6 +7,8 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export TERM=xterm-256color
 
+alias g="git"
+
 # Promt string
 PS1="$ "
 
