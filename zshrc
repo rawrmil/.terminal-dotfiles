@@ -8,6 +8,7 @@ export EDITOR="$VISUAL"
 export TERM=xterm-256color
 
 alias g="git"
+alias dots="~/.terminal-dotfiles/scripts/autopush.sh"
 
 # Promt string
 PS1="$ "
