@@ -38,5 +38,11 @@ sym() {
 
 CONFIGS=$HOME/.terminal-dotfiles/config
 
+# Terminal
 hascmd "zsh"  && sym "$CONFIGS/zshrc" "$HOME" ".zshrc"
 hascmd "nvim" && sym "$CONFIGS/nvim/init.lua" "$HOME/.config/nvim" "init.lua"
+
+# DWM
+hascmd "dwm"  && sym "$CONFIGS/dwm/config.h" "$HOME/git/dwm" "config.h"
+hascmd "st"   && sym "$CONFIGS/st/config.h" "$HOME/git/st" "config.h"
+hascmd "dmenu"
