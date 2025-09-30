@@ -39,4 +39,4 @@ sym() {
 CONFIGS=$HOME/.terminal-dotfiles/config
 
 hascmd "zsh"  && sym "$CONFIGS/zshrc" "$HOME" ".zshrc"
-hascmd "nvim" && sym "$CONFIGS/nvim-init.lua" "$HOME/.config/nvim" "init.lua"
+hascmd "nvim" && sym "$CONFIGS/nvim/init.lua" "$HOME/.config/nvim" "init.lua"
