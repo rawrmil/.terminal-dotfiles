@@ -9,7 +9,10 @@ export TERM=xterm-256color
 
 alias ls="ls --color=auto"
 alias g="git"
-alias dots="~/.terminal-dotfiles/scripts/autopush.sh"
+alias dots="~/.terminal-dotfiles/scripts/autopull.sh"
+
+# Startup
+~/.terminal-dotfiles/scripts/autopull.sh &
 
 # Promt string
 PS1="$ "
