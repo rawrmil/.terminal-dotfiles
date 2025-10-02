@@ -1,0 +1,21 @@
+[alias]
+	a = add
+	aa = add --all
+	r = rm --cached
+	unstage = reset --soft HEAD~1
+	l = log --oneline --graph --decorate
+	s = status
+	p = push
+	pn = push --no-verify
+	c = commit
+	cl = clone
+	aliases = config --get-regexp \"^alias\"
+	b = branch
+	co = checkout
+	sm = submodule
+	d = diff
+	rs = restore
+	rb = rebase
+	rt = reset
+[credential]
+	helper = store

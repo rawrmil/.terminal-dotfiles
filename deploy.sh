@@ -39,6 +39,7 @@ sym() {
 CONFIGS=$HOME/.terminal-dotfiles/config
 
 # Terminal
+hascmd "git"  && git config --global include.path ~/.terminal-dotfiles/config/gitconfig
 hascmd "zsh"  && sym "$CONFIGS/zshrc" "$HOME" ".zshrc"
 hascmd "nvim" && sym "$CONFIGS/nvim/init.lua" "$HOME/.config/nvim" "init.lua"
 
