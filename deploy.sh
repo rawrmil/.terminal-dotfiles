@@ -44,6 +44,9 @@ hascmd "zsh"  && sym "$CONFIGS/zshrc" "$HOME" ".zshrc"
 hascmd "nvim" && sym "$CONFIGS/nvim/init.lua" "$HOME/.config/nvim" "init.lua"
 
 # DWM
-hascmd "dwm"  && sym "$CONFIGS/dwm/config.h" "$HOME/git/dwm" "config.h"
+if hascmd "dwm"; then
+	sym "$CONFIGS/dwm/xinitrc"  "$HOME"         ".xinitrc"
+	sym "$CONFIGS/dwm/config.h" "$HOME/git/dwm" "config.h"
+fi
 hascmd "st"   && sym "$CONFIGS/st/config.h" "$HOME/git/st" "config.h"
 hascmd "dmenu"
