@@ -13,7 +13,11 @@ trap cleanup INT TERM EXIT
 [ -z "$DISPLAY" ] && export DISPLAY=:0
 
 while true; do
-	hsetroot -solid black
+	. ~/.xprofile
+	which xrdb && xrdb -merge ~/.Xresources \
+		|| echo "no xrdb"
+	which hsetroot && hsetroot -solid black \
+		|| echo "no hsetroot"
 	which setxkbmap && setxkbmap -layout us,ru -option grp:alt_shift_toggle \
 		|| echo "no setxkbmap"
 	#which picom && picom -b --config ~/dots/dwm/picom.conf
